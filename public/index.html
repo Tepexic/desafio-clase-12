@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Desafío clase 12</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  </head>
+
+  <body
+    class="w-full h-screen flex items-center justify-center p-4 overflow-auto bg-gray-900"
+  >
+    <div class="max-w-lg w-full bg-white p-4 rounded">
+      <h1 class="text-2xl font-medium">Agregar Producto:</h1>
+      <!-- FORMULARIO -->
+      <form onsubmit="return addProduct(this)" class="mt-10 w-full">
+        <div class="my-4 w-full">
+          <label class="mb-2">Nombre del producto:</label>
+          <input
+            class="
+              shadow
+              appearance-none
+              border
+              rounded
+              w-full
+              py-2
+              px-3
+              text-gray-700
+              leading-tight
+              focus:outline-none focus:shadow-outline
+            "
+            type="text"
+            placeholder="Lata de atún"
+            name="title"
+            id="title"
+          />
+        </div>
+        <div class="my-4 w-full">
+          <label class="mb-2">Precio:</label>
+          <input
+            class="
+              shadow
+              appearance-none
+              border
+              rounded
+              w-full
+              py-2
+              px-3
+              text-gray-700
+              leading-tight
+              focus:outline-none focus:shadow-outline
+            "
+            class="input"
+            type="number"
+            placeholder="2300"
+            name="price"
+            id="price"
+          />
+        </div>
+
+        <div class="my-4 w-full">
+          <label class="mb-2">Imagen del producto (URL):</label>
+          <input
+            class="
+              shadow
+              appearance-none
+              border
+              rounded
+              w-full
+              py-2
+              px-3
+              text-gray-700
+              leading-tight
+              focus:outline-none focus:shadow-outline
+            "
+            class="input"
+            type="text"
+            placeholder="https://mycdn.com/UUID"
+            name="thumbnail"
+            id="thumbnail"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="
+            mt-6
+            bg-blue-500
+            hover:bg-blue-700
+            text-white
+            font-bold
+            py-2
+            px-4
+            rounded
+            focus:outline-none focus:shadow-outline
+            w-full
+          "
+        >
+          Guardar
+        </button>
+      </form>
+
+      <!-- TABLA DE PRODUCTOS -->
+      <div id="table-placeholder" class="overflow-auto max-h-80 mt-6"></div>
+
+      <script id="product-table" type="text/x-handlebars-template">
+        <table class="table-auto mt-6">
+          <thead class="sticky top-0 bg-gray-200 py-4 shadow">
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each productos}}
+              <tr>
+                <td class="px-4 py-2"> {{title}} </td>
+                <td class="px-4 py-2 text-right"> ${{price}} </td>
+                <td>
+                  <div
+                    class="bg-contain bg-no-repeat bg-center h-20 w-40 m-4 rounded shadow"
+                    style="background-image: url({{thumbnail}})"
+                  ></div>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </script>
+    </div>
+
+  
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+<!-- <main>
+      <h1 class="text-2xl font-bold mb-6">Cliente Websockets</h1>
+      <form onsubmit="return addMessage(this)" class="mb-6 flex flex-col">
+        <input type="text" class="border-2 border-gray-200 p-2 mb-2" id="username" placeholder="Tu Nombre" >
+        <input type="text" class="border-2 border-gray-200 p-2 mb-2" id="texto" placeholder="Cuéntanos algo...">
+        <input type="submit" value="Enviar" class="px-4 py-2 bg-blue-700 text-white my-2">
+      </form>  
+      <div id="messages">
+      </div>
+    </main> -->
