@@ -15,7 +15,7 @@ socket.on("productos", (data) => {
 // función para mandar la información del formulario como mensaje
 function addProduct() {
   const producto = {
-    author: document.getElementById("title").value,
+    title: document.getElementById("title").value,
     price: document.getElementById("price").value,
     thumbnail: document.getElementById("thumbnail").value,
   };

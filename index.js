@@ -52,6 +52,7 @@ io.on("connection", async (socket) => {
   });
 });
 
+// Servir index.html en la raíz
 app.get("/", (req, res) => {
   res.render("public/index");
 });
