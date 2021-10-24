@@ -13,143 +13,173 @@
   </head>
 
   <body
-    class="w-full h-screen flex items-center justify-center p-4 overflow-auto bg-gray-900"
+    class="w-full h-screen overflow-auto bg-gray-900 grid grid-cols-1 lg:grid-cols-2 gap-8 p-4"
   >
-    <div class="max-w-lg w-full bg-white p-4 rounded">
-      <h1 class="text-2xl font-medium">Agregar Producto:</h1>
-      <!-- FORMULARIO -->
-      <form onsubmit="return addProduct(this)" class="mt-10 w-full">
-        <div class="my-4 w-full">
-          <label class="mb-2">Nombre del producto:</label>
-          <input
+    <div class="h-full max-h-screen w-full bg-white p-4 rounded mx-auto flex flex-col">
+      <div class="flex-none">
+        <h1 class="text-2xl font-medium">Agregar Producto:</h1>
+        <!-- FORMULARIO -->
+        <form onsubmit="return addProduct(this)" class="mt-10 w-full">
+          <div class="my-4 w-full">
+            <label class="mb-2">Nombre del producto:</label>
+            <input
+              class="
+                shadow
+                appearance-none
+                border
+                rounded
+                w-full
+                py-2
+                px-3
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              type="text"
+              placeholder="Lata de atún"
+              name="title"
+              id="title"
+              required
+            />
+          </div>
+          <div class="my-4 w-full">
+            <label class="mb-2">Precio:</label>
+            <input
+              class="
+                shadow
+                appearance-none
+                border
+                rounded
+                w-full
+                py-2
+                px-3
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              class="input"
+              type="number"
+              placeholder="2300"
+              name="price"
+              id="price"
+              required
+            />
+          </div>
+  
+          <div class="my-4 w-full">
+            <label class="mb-2">Imagen del producto (URL):</label>
+            <input
+              class="
+                shadow
+                appearance-none
+                border
+                rounded
+                w-full
+                py-2
+                px-3
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:shadow-outline
+              "
+              class="input"
+              type="text"
+              placeholder="https://mycdn.com/UUID"
+              name="thumbnail"
+              id="thumbnail"
+              required
+            />
+          </div>
+  
+          <button
+            type="submit"
             class="
-              shadow
-              appearance-none
-              border
-              rounded
-              w-full
+              mt-2
+              bg-blue-600
+              hover:bg-blue-800
+              text-white
+              font-bold
               py-2
-              px-3
-              text-gray-700
-              leading-tight
-              focus:outline-none focus:shadow-outline
-            "
-            type="text"
-            placeholder="Lata de atún"
-            name="title"
-            id="title"
-            required
-          />
-        </div>
-        <div class="my-4 w-full">
-          <label class="mb-2">Precio:</label>
-          <input
-            class="
-              shadow
-              appearance-none
-              border
+              px-4
               rounded
-              w-full
-              py-2
-              px-3
-              text-gray-700
-              leading-tight
               focus:outline-none focus:shadow-outline
-            "
-            class="input"
-            type="number"
-            placeholder="2300"
-            name="price"
-            id="price"
-            required
-          />
-        </div>
-
-        <div class="my-4 w-full">
-          <label class="mb-2">Imagen del producto (URL):</label>
-          <input
-            class="
-              shadow
-              appearance-none
-              border
-              rounded
               w-full
-              py-2
-              px-3
-              text-gray-700
-              leading-tight
-              focus:outline-none focus:shadow-outline
             "
-            class="input"
-            type="text"
-            placeholder="https://mycdn.com/UUID"
-            name="thumbnail"
-            id="thumbnail"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          class="
-            mt-6
-            bg-blue-500
-            hover:bg-blue-700
-            text-white
-            font-bold
-            py-2
-            px-4
-            rounded
-            focus:outline-none focus:shadow-outline
-            w-full
-          "
-        >
-          Guardar
-        </button>
-      </form>
-
-      <!-- TABLA DE PRODUCTOS -->
-      <h2 class="text-xl font-medium mt-6">Lista de productos:</h2>
-      <div id="table-placeholder" class="overflow-auto max-h-80"></div>
-
-      <script id="product-table" type="text/x-handlebars-template">
-        <table class="table-auto mt-2">
-          <thead class="sticky top-0 bg-gray-200 shadow-lg">
-            <tr>
-              <th class="py-2">Nombre</th>
-              <th class="py-2">Precio</th>
-              <th class="py-2">Imagen</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each productos}}
-              <tr>
-                <td class="px-4 py-2"> {{title}} </td>
-                <td class="px-4 py-2 text-right"> ${{price}} </td>
-                <td>
-                  <div
-                    class="bg-contain bg-no-repeat bg-center h-20 w-40 m-4 rounded shadow"
-                    style="background-image: url({{thumbnail}})"
-                  ></div>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </script>
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
+      
+      <h2 class="flex-none text-xl font-medium mt-6">Lista de productos:</h2>
+      <div id="table-placeholder" class="flex-grow overflow-auto"></div>
     </div>
 
+    <div class="h-full max-h-screen w-full max-w-md  bg-white p-4 rounded mx-auto flex flex-col">
+      <h1 class="text-2xl font-medium flex-grow-0">Centro de Mensajes</h1>
+      <div id="messages-placeholder" class="flex-grow overflow-auto border-2 p-4 my-4 rounded">
+      </div>
+      <form onsubmit="return addMessage(this)" class="flex-none mb-6 flex flex-col">
+        <div class="my-4 w-full">
+        <input
+          type="email" 
+          class="my-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="username" placeholder="juan@tienda.com"
+          required
+        >
+        <input
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="message"
+          placeholder="Tu mensaje..."
+          required
+        >
+        <input
+          type="submit"
+          value="Enviar"
+          class=" mt-2 bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        >
+      </form>  
+    </div>
+
+    <!-- TABLA DE PRODUCTOS -->  
+    <script id="product-table" type="text/x-handlebars-template">
+      <table class="table-auto mt-4">
+        <thead class="sticky top-0 bg-gray-200 shadow-lg">
+          <tr>
+            <th class="py-2">Nombre</th>
+            <th class="py-2">Precio</th>
+            <th class="py-2">Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each productos}}
+            <tr>
+              <td class="px-4 py-2"> {{title}} </td>
+              <td class="px-4 py-2 text-right"> ${{price}} </td>
+              <td>
+                <div
+                  class="bg-contain bg-no-repeat bg-center h-20 w-40 m-4 rounded shadow"
+                  style="background-image: url({{thumbnail}})"
+                ></div>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </script>
+
+    <!-- MENSAJES -->  
+    <script id="message-log" type="text/x-handlebars-template">
+      {{#each messages}}
+      <div>
+        <div class="flex items-center">
+          <p class="text-blue-600"> {{account}} </p>
+          <p> [<span class="text-yellow-800">{{timestamp}}</span>]:</p>
+        </div>
+        <p class="text-green-600"><i>{{ message }}</i></p>
+      </div>
+      {{/each}}
+    </script>
     <script src="js/main.js"></script>
   </body>
 </html>
-
-<!-- <main>
-      <h1 class="text-2xl font-bold mb-6">Cliente Websockets</h1>
-      <form onsubmit="return addMessage(this)" class="mb-6 flex flex-col">
-        <input type="text" class="border-2 border-gray-200 p-2 mb-2" id="username" placeholder="Tu Nombre" >
-        <input type="text" class="border-2 border-gray-200 p-2 mb-2" id="texto" placeholder="Cuéntanos algo...">
-        <input type="submit" value="Enviar" class="px-4 py-2 bg-blue-700 text-white my-2">
-      </form>  
-      <div id="messages">
-      </div>
-    </main> -->
