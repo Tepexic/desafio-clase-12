@@ -14,11 +14,18 @@ socket.on("productos", (data) => {
 
 // función para mandar la información del formulario como mensaje
 function addProduct() {
+  const title = document.getElementById("title");
+  const price = document.getElementById("price");
+  const thumbnail = document.getElementById("thumbnail");
   const producto = {
-    title: document.getElementById("title").value,
-    price: document.getElementById("price").value,
-    thumbnail: document.getElementById("thumbnail").value,
+    title: title.value,
+    price: price.value,
+    thumbnail: thumbnail.value,
   };
   socket.emit("new-product", producto);
+  // Limpiar formulario
+  title.value = "";
+  price.value = "";
+  thumbnail.value = "";
   return false;
 }
