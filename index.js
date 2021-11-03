@@ -26,9 +26,11 @@ const productos = require("./routes/productos");
 const { Server: SocketServer } = require("socket.io");
 const { Server: HttpServer } = require("http");
 
-const Contenedor = require("./utils/Contenedor");
-const Productos = new Contenedor("./routes/data/productos.json");
-const Mensajes = new Contenedor("./model/data/messages.json");
+const Contenedor = require("./model/Contenedor");
+const prodOptions = require("./DB/products-table/options/mysql");
+const msgOptions = require("./DB/messages-table/options/sqlite");
+const Productos = new Contenedor(prodOptions.options, "products");
+const Mensajes = new Contenedor(msgOptions.options, "messages");
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -51,13 +53,13 @@ io.on("connection", async (socket) => {
 
   // Añadir nuevo mensaje y emitir nueva lista
   socket.on("new-message", async (data) => {
-    Mensajes.save(data);
+    await Mensajes.save(data);
     socket.emit("messages", await Mensajes.getAll());
   });
 
   // Añadir nuevo producto y emitir nueva lista
   socket.on("new-product", async (data) => {
-    Productos.save(data);
+    await Productos.save(data);
     socket.emit("productos", await Productos.getAll());
   });
 });
