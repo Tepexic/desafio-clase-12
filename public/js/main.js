@@ -19,6 +19,9 @@ const denormalizeMessages = (normalizedData) => {
   return denormalizedData;
 };
 
+// global variable to store authors' data
+let authors = {};
+
 // Socket
 const socket = io.connect();
 
@@ -37,18 +40,23 @@ socket.on("productos", (data) => {
 
 // función para renderizar tabla de mensajes
 socket.on("messages", (data) => {
-  console.log("---- NORMALIZADOS ----");
+  console.log("---- MENSAJES NORMALIZADOS ----");
   console.log(data);
-  console.log("---- DESNORMALIZAR ----");
-  const denormalizedData = denormalizeMessages(data.normalizedData);
-  console.log(denormalizedData);
-  const template = Handlebars.compile(messageLogSrc);
-  const mensajes = {
-    messages: denormalizedData.messages,
-    compression: data.compressionRate,
-  };
-  document.getElementById("messages-placeholder").innerHTML =
-    template(mensajes);
+  // deep copy authors
+  if (data.normalizedData) {
+    authors = JSON.parse(JSON.stringify(data.normalizedData.entities.author));
+
+    console.log("---- MENSAJES DESNORMALIZADOS ----");
+    const denormalizedData = denormalizeMessages(data.normalizedData);
+    console.log(denormalizedData);
+    const template = Handlebars.compile(messageLogSrc);
+    const mensajes = {
+      messages: denormalizedData.messages,
+      compression: data.compressionRate,
+    };
+    document.getElementById("messages-placeholder").innerHTML =
+      template(mensajes);
+  }
 });
 
 // función para mandar la información del formulario como mensaje
@@ -75,9 +83,9 @@ function addMessage() {
   const timestamp = new Date().toLocaleString();
   const message = document.getElementById("message");
   const mensaje = {
-    account: account.value,
-    timestamp,
+    author: authors[account.value],
     text: message.value,
+    timestamp,
   };
   socket.emit("new-message", mensaje);
   message.value = ""; // limpiar campo de mensaje
