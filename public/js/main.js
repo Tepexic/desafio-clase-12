@@ -1,3 +1,25 @@
+// normalizacion
+const authorSchema = new normalizr.schema.Entity("author");
+const messageSchema = new normalizr.schema.Entity("message", {
+  author: authorSchema,
+});
+const messagesSchema = new normalizr.schema.Entity("messages", {
+  messages: [messageSchema],
+});
+const normalizeMessages = (messages) => {
+  const normalizedData = normalizr.normalize(messages, messagesSchema);
+  return normalizedData;
+};
+const denormalizeMessages = (normalizedData) => {
+  const denormalizedData = normalizr.denormalize(
+    "messages",
+    messagesSchema,
+    normalizedData.entities
+  );
+  return denormalizedData;
+};
+
+// Socket
 const socket = io.connect();
 
 // Obtener plantilla de handlebars
@@ -15,9 +37,16 @@ socket.on("productos", (data) => {
 
 // función para renderizar tabla de mensajes
 socket.on("messages", (data) => {
+  console.log("---- NORMALIZADOS ----");
   console.log(data);
+  console.log("---- DESNORMALIZAR ----");
+  const denormalizedData = denormalizeMessages(data.normalizedData);
+  console.log(denormalizedData);
   const template = Handlebars.compile(messageLogSrc);
-  const mensajes = { messages: data };
+  const mensajes = {
+    messages: denormalizedData.messages,
+    compression: data.compressionRate,
+  };
   document.getElementById("messages-placeholder").innerHTML =
     template(mensajes);
 });
