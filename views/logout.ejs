@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Logout - Desafío clase 24</title>
+  </head>
+
+  <body
+    class="w-full h-screen bg-gray-900 text-white flex justify-center items-center"
+  >
+    <main>
+        <h1 class="text-xl">Hasta luego, <%=nombre%> 👋</h1>
+    </main>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // redirigir al usuario a la página principal
+      setTimeout(() => {
+          location.href = '/'
+      }, 2000)
+    })
+</script>
+</html>

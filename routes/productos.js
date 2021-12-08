@@ -5,22 +5,24 @@ const { Router } = express;
 const Contenedor = require("./../utils/Contenedor");
 const Productos = new Contenedor("./routes/data/productos.json");
 
+const auth = require("./../utils/auth");
+
 const productosRouter = Router();
 
-productosRouter.get("/", async (req, res) => {
-  const productos = await Productos.getAll();
-  res.render("pages/lista", {
-    productos,
-  });
-});
+// productosRouter.get("/", async (req, res) => {
+//   const productos = await Productos.getAll();
+//   res.render("pages/lista", {
+//     productos,
+//   });
+// });
 
-productosRouter.post("/", async (req, res) => {
+productosRouter.post("/", auth, async (req, res) => {
   const productoNuevo = req.body;
   await Productos.save(productoNuevo);
   res.redirect(301, "../");
 });
 
-productosRouter.get("/productos-test", (req, res) => {
+productosRouter.get("/api/productos-test", (req, res) => {
   const productos = [
     ...new Array(10).fill(0).map((_, i) => {
       return {

@@ -7,15 +7,26 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>Desafío clase 12</title>
+    <title>Desafío clase 24</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
   </head>
 
   <body
-    class="w-full h-screen overflow-auto bg-gray-900 grid grid-cols-1 lg:grid-cols-2 gap-8 p-4"
+    class="w-full h-screen bg-gray-900 p-4"
   >
+  <div class="py-4 flex items-center justify-between">
+      <h1 class="bg-gray-800 text-white text-2xl rounded w-full py-2 mr-2">
+        Hola, <%=nombre%>
+      </h1>
+      <button class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="location.href='/logout'">
+        Salir
+      </button>
+  </div>
+
+  <div class="overflow-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+
     <div class="h-full max-h-screen w-full bg-white p-4 rounded mx-auto flex flex-col">
       <div class="flex-none">
         <h1 class="text-2xl font-medium">Agregar Producto:</h1>
@@ -114,7 +125,6 @@
       <h2 class="flex-none text-xl font-medium mt-6">Lista de productos:</h2>
       <div id="table-placeholder" class="flex-grow overflow-auto"></div>
     </div>
-
     <div class="h-full max-h-screen w-full max-w-md  bg-white p-4 rounded mx-auto flex flex-col">
       <h1 class="text-2xl font-medium flex-grow-0">Centro de Mensajes.</h1>
       <div id="messages-placeholder" class="flex-grow overflow-auto border-2 p-4 my-4 rounded">
@@ -141,6 +151,8 @@
         >
       </form>  
     </div>
+  </div>
+
 
     <!-- TABLA DE PRODUCTOS -->  
     <script id="product-table" type="text/x-handlebars-template">
