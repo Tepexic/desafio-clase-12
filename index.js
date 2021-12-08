@@ -5,6 +5,7 @@ const { Server: HttpServer } = require("http");
 
 const session = require("express-session");
 const auth = require("./utils/auth");
+const MongoStore = require("connect-mongo");
 
 /**
  * Contenedores
@@ -32,6 +33,11 @@ app.use("/", productos);
 app.use(express.static("public"));
 app.use(
   session({
+    store: new MongoStore({
+      mongoUrl:
+        "mongodb+srv://jesus:8dQg6XUWTuRWZV@cluster0.foboz.mongodb.net/sesiones?retryWrites=true&w=majority",
+      MongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+    }),
     secret: "qwertyuiop",
     resave: false,
     saveUninitialized: false,
