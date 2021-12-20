@@ -6,14 +6,20 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const path = require("path");
 
+const ContenedorMongo = require("../models/ContenedorMongo");
+const User = new ContenedorMongo();
+
 /**
  * Passport configuration
  */
 passport.use(
   "login",
   new LocalStrategy((username, password, done) => {
-    User.findOne({ username: username }, (err, user) => {
+    console.log("username", username);
+    console.log("password", password);
+    User.collection.findOne({ username: username }, (err, user) => {
       if (err) {
+        console.log(err);
         return done(err);
       }
       if (!user) {
@@ -37,7 +43,8 @@ passport.use(
       passReqToCallback: true,
     },
     (req, username, password, done) => {
-      User.findOne({ username: username }, (err, user) => {
+      console.log(username, password);
+      User.collection.findOne({ username: username }, (err, user) => {
         if (err) {
           console.log("Signup error: ", err);
           return done(err);
@@ -51,7 +58,7 @@ passport.use(
           password: createHash(password),
           email: req.body.email,
         };
-        User.create(newUser, (err, user) => {
+        User.collection.create(newUser, (err, user) => {
           if (err) {
             console.log("Signup error: ", err);
             return done(err);
@@ -69,7 +76,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id, done);
+  User.collection.findById(id, done);
 });
 
 const authRouter = new Router();
@@ -97,25 +104,25 @@ authRouter.get("/failedsignup", (req, res) => {
 
 // Log user out
 authRouter.get("/logout", (req, res) => {
-  const nombre = req.user?.email ?? "visitante@email.com";
+  const nombre = req.user?.username;
   req.logout();
   res.render(path.join(process.cwd(), "/views/logout.ejs"), { nombre });
 });
 
 authRouter.post(
   "/login",
-  passport.authenticate("login", { failureRedirect: "/failedlogin" }),
-  (req, res) => {
-    res.redirect("/");
-  }
+  passport.authenticate("login", {
+    failureRedirect: "/failedlogin",
+    successRedirect: "/",
+  })
 );
 
 authRouter.post(
-  "/register",
-  passport.authenticate("signup", { failureRedirect: "/failedsignup" }),
-  (req, res) => {
-    res.redirect("/");
-  }
+  "/signup",
+  passport.authenticate("signup", {
+    failureRedirect: "/failedsignup",
+    successRedirect: "/",
+  })
 );
 
 // Utils

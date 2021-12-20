@@ -16,6 +16,7 @@ const Productos = new Contenedor("./routes/data/productos.json");
 const Mensajes = new Contenedor("./model/data/messages.json");
 
 const { normalizeMessages } = require("./utils/normalizador");
+const MongoStore = require("connect-mongo");
 
 /**
  *
@@ -29,15 +30,20 @@ const io = new SocketServer(httpServer);
  */
 app.set("view engine", "ejs");
 app.use(express.json());
-app.use(express.urlencoded({ encoded: true }));
+app.use(express.urlencoded({ encoded: false }));
 app.use(express.static("public"));
 app.use(
   session({
+    store: new MongoStore({
+      mongoUrl:
+        "mongodb+srv://jesus:8dQg6XUWTuRWZV@cluster0.foboz.mongodb.net/sesiones?retryWrites=true&w=majority",
+      MongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+    }),
     secret: "qwertyuiop",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60, // 5 minutos
+      maxAge: 1000 * 60 * 10,
     },
   })
 );
@@ -81,38 +87,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/tienda", auth, (req, res) => {
-  res.render("index.ejs", { nombre: req.session.user });
+  res.render("index.ejs", { nombre: req.user?.username });
 });
-
-// app.get("/login", (req, res) => {
-//   if (req.session?.user) {
-//     res.redirect("/");
-//   } else {
-//     res.sendFile("./views/login.html", { root: __dirname });
-//   }
-// });
-
-// app.post("/login", (req, res) => {
-//   req.session.user = req.body.nombre;
-//   res.redirect("/");
-// });
-
-// app.get("/logout", (req, res) => {
-//   const user = req.session?.user;
-//   if (user) {
-//     req.session.destroy((error) => {
-//       if (!error) {
-//         res.render("logout.ejs", {
-//           nombre: user,
-//         });
-//       } else {
-//         res.redirect("/");
-//       }
-//     });
-//   } else {
-//     res.redirect("/");
-//   }
-// });
 
 /**
  * Iniciar el servidor
