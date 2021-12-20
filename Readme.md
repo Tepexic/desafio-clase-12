@@ -1,9 +1,14 @@
-# Desafío Clase 22
+# Desafío Clase 26
+
+Implementar sobre el entregable que venimos realizando un mecanismo de autenticación. Para ello:
+
+- Se incluirá una vista de registro, en donde se pidan email y contraseña. Estos datos se persistirán usando MongoDb, en una (nueva) colección de usuarios, cuidando que la contraseña quede encriptada (sugerencia: usar la librería bcrypt).
+- Una vista de login, donde se pida email y contraseña, y que realice la autenticación del lado del servidor a través de una estrategia de passport local.
+- Cada una de las vistas (logueo - registro) deberá tener un botón para ser redirigido a la otra.
+
+Una vez logueado el usuario, se lo redirigirá al inicio, el cual ahora mostrará también su email, y un botón para desolguearse.
+Además, se activará un espacio de sesión controlado por la sesión de passport. Esta estará activa por 10 minutos y en cada acceso se recargará este tiempo.
+Agregar también vistas de error para login (credenciales no válidas) y registro (usuario ya registrado).
+El resto de la funciones, deben quedar tal cual estaban el proyecto original.
 
 ## Notas:
-
-- La persistencia de los mensajes se realiza en archivo JSON
-- El mensaje se envía del frontend hacia el backend, el cual lo almacena el JSON
-- El array que manda el backend está normalizadonormalizado con normalizr, conteniendo una entidad de autores.
-- El frontend posee el mismo esquema de normalización que el backend, para que este pueda desnormalizar y presentar la información.
-- Se presenta el porcentaje de compresión tras la normalización, se actualiza en cada mensaje, puesto que crece la base de datos.
