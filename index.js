@@ -1,10 +1,12 @@
 const express = require("express");
 const productos = require("./routes/productos");
+const authRouter = require("./routes/authRouter");
 const { Server: SocketServer } = require("socket.io");
 const { Server: HttpServer } = require("http");
 
 const session = require("express-session");
 const auth = require("./utils/auth");
+const passport = require("passport");
 
 /**
  * Contenedores
@@ -28,7 +30,6 @@ const io = new SocketServer(httpServer);
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ encoded: true }));
-app.use("/", productos);
 app.use(express.static("public"));
 app.use(
   session({
@@ -40,6 +41,11 @@ app.use(
     },
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/", productos);
+app.use("/", authRouter);
 
 /**
  * Socket.io
@@ -78,35 +84,35 @@ app.get("/tienda", auth, (req, res) => {
   res.render("index.ejs", { nombre: req.session.user });
 });
 
-app.get("/login", (req, res) => {
-  if (req.session?.user) {
-    res.redirect("/");
-  } else {
-    res.sendFile("./views/login.html", { root: __dirname });
-  }
-});
+// app.get("/login", (req, res) => {
+//   if (req.session?.user) {
+//     res.redirect("/");
+//   } else {
+//     res.sendFile("./views/login.html", { root: __dirname });
+//   }
+// });
 
-app.post("/login", (req, res) => {
-  req.session.user = req.body.nombre;
-  res.redirect("/");
-});
+// app.post("/login", (req, res) => {
+//   req.session.user = req.body.nombre;
+//   res.redirect("/");
+// });
 
-app.get("/logout", (req, res) => {
-  const user = req.session?.user;
-  if (user) {
-    req.session.destroy((error) => {
-      if (!error) {
-        res.render("logout.ejs", {
-          nombre: user,
-        });
-      } else {
-        res.redirect("/");
-      }
-    });
-  } else {
-    res.redirect("/");
-  }
-});
+// app.get("/logout", (req, res) => {
+//   const user = req.session?.user;
+//   if (user) {
+//     req.session.destroy((error) => {
+//       if (!error) {
+//         res.render("logout.ejs", {
+//           nombre: user,
+//         });
+//       } else {
+//         res.redirect("/");
+//       }
+//     });
+//   } else {
+//     res.redirect("/");
+//   }
+// });
 
 /**
  * Iniciar el servidor
