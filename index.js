@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const productos = require("./routes/productos");
 const authRouter = require("./routes/authRouter");
+const infoRouter = require("./routes/info");
 const { Server: SocketServer } = require("socket.io");
 const { Server: HttpServer } = require("http");
 
@@ -52,6 +53,7 @@ app.use(passport.session());
 
 app.use("/", productos);
 app.use("/", authRouter);
+app.use("/", infoRouter);
 
 /**
  * Socket.io
