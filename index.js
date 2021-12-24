@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const productos = require("./routes/productos");
 const authRouter = require("./routes/authRouter");
@@ -35,8 +36,7 @@ app.use(express.static("public"));
 app.use(
   session({
     store: new MongoStore({
-      mongoUrl:
-        "mongodb+srv://jesus:8dQg6XUWTuRWZV@cluster0.foboz.mongodb.net/sesiones?retryWrites=true&w=majority",
+      mongoUrl: `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.foboz.mongodb.net/${process.env.SESSION_DB}?retryWrites=true&w=majority`,
       MongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
     }),
     secret: "qwertyuiop",

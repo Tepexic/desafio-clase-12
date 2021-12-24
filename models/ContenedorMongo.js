@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
-const uri =
-  "mongodb+srv://jesus:8dQg6XUWTuRWZV@cluster0.foboz.mongodb.net/users?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.foboz.mongodb.net/${process.env.USERS_DB}?retryWrites=true&w=majority`;
 
 const usersSchema = new Schema(
   {
