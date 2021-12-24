@@ -9,13 +9,6 @@ const auth = require("./../utils/auth");
 
 const productosRouter = Router();
 
-// productosRouter.get("/", async (req, res) => {
-//   const productos = await Productos.getAll();
-//   res.render("pages/lista", {
-//     productos,
-//   });
-// });
-
 productosRouter.post("/", auth, async (req, res) => {
   const productoNuevo = req.body;
   await Productos.save(productoNuevo);
