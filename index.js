@@ -7,6 +7,8 @@ const randomsRouter = require("./routes/randoms");
 const { Server: SocketServer } = require("socket.io");
 const { Server: HttpServer } = require("http");
 
+const parseArgs = require("minimist");
+
 const session = require("express-session");
 const auth = require("./utils/auth");
 const passport = require("passport");
@@ -97,13 +99,18 @@ app.get("/tienda", auth, (req, res) => {
 /**
  * Iniciar el servidor
  */
-const PORT = 8080;
-const connectedServer = httpServer.listen(PORT, () => {
-  console.log(
-    `Servidor Http con Websockets - escuchando en el puerto ${
-      connectedServer.address().port
-    }`
-  );
+options = {
+  default: {
+    port: 8080,
+  },
+  alias: {
+    p: "port",
+  },
+};
+const argv = parseArgs(process.argv.slice(2), options);
+
+const connectedServer = httpServer.listen(argv.port, () => {
+  console.log(`Servidor corriendo en http://localhost:${argv.port}`);
 });
 connectedServer.on("error", (error) =>
   console.log(`Error en servidor ${error}`)
