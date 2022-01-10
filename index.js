@@ -58,47 +58,47 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/", productos);
-app.use("/", authRouter);
-app.use("/", infoRouter);
-app.use("/", randomsRouter);
+// app.use("/", productos);
+// app.use("/", authRouter);
+// app.use("/", infoRouter);
+// app.use("/", randomsRouter);
 
-/**
- * Socket.io
- */
-io.on("connection", async (socket) => {
-  console.log("Un cliente se ha conectado", socket.id);
-  // Emitir mensajes y prouctos al nuevo socket
-  socket.emit("productos", await Productos.getAll());
+// /**
+//  * Socket.io
+//  */
+// io.on("connection", async (socket) => {
+//   console.log("Un cliente se ha conectado", socket.id);
+//   // Emitir mensajes y prouctos al nuevo socket
+//   socket.emit("productos", await Productos.getAll());
 
-  socket.emit(
-    "messages",
-    normalizeMessages({ id: "messages", messages: await Mensajes.getAll() })
-  );
+//   socket.emit(
+//     "messages",
+//     normalizeMessages({ id: "messages", messages: await Mensajes.getAll() })
+//   );
 
-  // Añadir nuevo mensaje y emitir nueva lista
-  socket.on("new-message", async (data) => {
-    Mensajes.save(data);
-    socket.emit("messages", await Mensajes.getAll());
-  });
+//   // Añadir nuevo mensaje y emitir nueva lista
+//   socket.on("new-message", async (data) => {
+//     Mensajes.save(data);
+//     socket.emit("messages", await Mensajes.getAll());
+//   });
 
-  // Añadir nuevo producto y emitir nueva lista
-  socket.on("new-product", async (data) => {
-    Productos.save(data);
-    socket.emit("productos", await Productos.getAll());
-  });
-});
+//   // Añadir nuevo producto y emitir nueva lista
+//   socket.on("new-product", async (data) => {
+//     Productos.save(data);
+//     socket.emit("productos", await Productos.getAll());
+//   });
+// });
 
-/**
- * Aplicación con autenticación
- */
-app.get("/", (req, res) => {
-  res.redirect("/tienda");
-});
+// /**
+//  * Aplicación con autenticación
+//  */
+// app.get("/", (req, res) => {
+//   res.redirect("/tienda");
+// });
 
-app.get("/tienda", auth, (req, res) => {
-  res.render("index.ejs", { nombre: req.user?.username });
-});
+// app.get("/tienda", auth, (req, res) => {
+//   res.render("index.ejs", { nombre: req.user?.username });
+// });
 
 /**
  * Iniciar el servidor
@@ -118,6 +118,9 @@ const argv = parseArgs(process.argv.slice(2), options);
 const isCluster = argv.mode === "cluster";
 
 if (isCluster && cluster.isMaster) {
+  /**
+   * MAESTRO
+   */
   console.log("Master proceso iniciado");
   console.log(`Cantidad de procesadores: ${numCpus}`);
   console.log(`PID MASTER ${process.pid}`);
@@ -129,6 +132,53 @@ if (isCluster && cluster.isMaster) {
     console.log(`El worker ${worker.process.pid} ha finalizado`);
   });
 } else {
+  /**
+   * ESCLAVO
+   */
+
+  // Rutas
+  app.use("/", productos);
+  app.use("/", authRouter);
+  app.use("/", infoRouter);
+  app.use("/", randomsRouter);
+
+  /**
+   * Socket.io
+   */
+  io.on("connection", async (socket) => {
+    console.log("Un cliente se ha conectado", socket.id);
+    // Emitir mensajes y prouctos al nuevo socket
+    socket.emit("productos", await Productos.getAll());
+
+    socket.emit(
+      "messages",
+      normalizeMessages({ id: "messages", messages: await Mensajes.getAll() })
+    );
+
+    // Añadir nuevo mensaje y emitir nueva lista
+    socket.on("new-message", async (data) => {
+      Mensajes.save(data);
+      socket.emit("messages", await Mensajes.getAll());
+    });
+
+    // Añadir nuevo producto y emitir nueva lista
+    socket.on("new-product", async (data) => {
+      Productos.save(data);
+      socket.emit("productos", await Productos.getAll());
+    });
+  });
+
+  /**
+   * Aplicación con autenticación
+   */
+  app.get("/", (req, res) => {
+    res.redirect("/tienda");
+  });
+
+  app.get("/tienda", auth, (req, res) => {
+    res.render("index.ejs", { nombre: req.user?.username });
+  });
+
   console.log(`Proceso ${process.pid} iniciado`);
   const connectedServer = httpServer.listen(argv.port, () => {
     console.log(`Servidor corriendo en http://localhost:${argv.port}`);

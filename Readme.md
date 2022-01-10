@@ -86,3 +86,14 @@ Procesos con modo cluster:
 
 ![Modo cluster con pm2](./images/pm2-list-cluster.png "Modo cluster con pm2")
 ![Modo cluster con pm2, procesos OS](./images/pm2-os-cluster.png "Modo cluster con pm2, procesos OS")
+
+## Consigna: Configurar Nginx para balancear cargas de nuestro servidor de la siguiente manera:
+
+- Redirigir todas las consultas a /api/randoms a un cluster de servidores escuchando en el puerto 8081. El cluster será creado desde node utilizando el módulo nativo cluster.
+- El resto de las consultas, redirigirlas a un servidor individual escuchando en el puerto 8080.
+  Verificar que todo funcione correctamente.
+- Luego, modificar la configuración para que todas las consultas a /api/randoms sean redirigidas a un cluster de servidores gestionado desde nginx, repartiéndolas equitativamente entre 4 instancias escuchando en los puertos 8082, 8083, 8084 y 8085 respectivamente.
+
+### Resolucion: Los archivos de confighuracion se encuentran en la carpeta `/nginx`
+
+Para correr el servidor, usé `pm2 start index.js --name "server-test" --watch -i max`
