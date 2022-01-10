@@ -1,4 +1,8 @@
 require("dotenv").config();
+
+const cluster = require("cluster");
+const numCpus = require("os").cpus().length;
+
 const express = require("express");
 const productos = require("./routes/productos");
 const authRouter = require("./routes/authRouter");
@@ -102,16 +106,34 @@ app.get("/tienda", auth, (req, res) => {
 options = {
   default: {
     port: 8080,
+    mode: "fork",
   },
   alias: {
     p: "port",
+    m: "mode",
   },
 };
 const argv = parseArgs(process.argv.slice(2), options);
 
-const connectedServer = httpServer.listen(argv.port, () => {
-  console.log(`Servidor corriendo en http://localhost:${argv.port}`);
-});
-connectedServer.on("error", (error) =>
-  console.log(`Error en servidor ${error}`)
-);
+const isCluster = argv.mode === "cluster";
+
+if (isCluster && cluster.isMaster) {
+  console.log("Master proceso iniciado");
+  console.log(`Cantidad de procesadores: ${numCpus}`);
+  console.log(`PID MASTER ${process.pid}`);
+
+  for (let i = 0; i < numCpus; i++) {
+    cluster.fork();
+  }
+  cluster.on("exit", (worker, code, signal) => {
+    console.log(`El worker ${worker.process.pid} ha finalizado`);
+  });
+} else {
+  console.log(`Proceso ${process.pid} iniciado`);
+  const connectedServer = httpServer.listen(argv.port, () => {
+    console.log(`Servidor corriendo en http://localhost:${argv.port}`);
+  });
+  connectedServer.on("error", (error) =>
+    console.log(`Error en servidor ${error}`)
+  );
+}

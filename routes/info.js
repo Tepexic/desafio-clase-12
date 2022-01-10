@@ -12,6 +12,7 @@ infoRouter.get("/info", async (req, res) => {
     nodeVersion: process.version,
     folder: __dirname,
     rss: process.memoryUsage().rss,
+    cpus: require("os").cpus().length,
   };
   res.json(info);
 });
