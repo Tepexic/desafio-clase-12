@@ -1,99 +1,47 @@
-# Desafío Clase 30
+# Desafío LOGGERS, GZIP y ANÁLISIS DE PERFORMANCE
 
-## Consigna: Modo cluster y servidor
-
-Tomando con base el proyecto que vamos realizando, agregar un parámetro más en la ruta de comando que permita ejecutar al servidor en modo fork o cluster. Dicho parámetro será 'FORK' en el primer caso y 'CLUSTER' en el segundo, y de no pasarlo, el servidor iniciará en modo fork.
-
-- Agregar en la vista info (`http://localhost:8080/info/`), el número de procesadores presentes en el servidor.
-- Ejecutar el servidor (modos FORK y CLUSTER) con nodemon verificando el número de procesos tomados por node.
-- Ejecutar el servidor (con los parámetros adecuados) utilizando Forever, verificando su correcta operación. Listar los procesos por Forever y por sistema operativo.
-
-### Resolucion
-
-Instalar dependencias
+## Para correr el proyecto
 
 ```
 npm install
-```
-
-EL servidor se ejecuta desde el archivo `./inmdex.js`. Se puede cambiar el puerto mediante el argumento `-p` y el modo (cluster o fork) mediante el argumento `-m`. Por defecto, el puerto es 8080 y el modo, fork. Ejemplos:
-
-### Con node:
-
-```
 node index.js
-node index.js -p 8082
-node index -p 8082 -m cluster
 ```
 
-Procesos modo fork:
+## Loggers y gzip
 
-![Modo fork con node](./images/node-fork.png "Modo fork con node")
+Incorporar al proyecto de servidor de trabajo la compresión gzip. Verificar sobre la ruta `/info` con y sin compresión, la diferencia de cantidad de bytes devueltos en un caso y otro:
 
-Procesos modo cluster:
+### Resolución:
 
-![Modo cluster con node](./images/node-fork.png "Modo cluster con node")
+- Desarrrollé la consiga en un nueva ruta `/infozip`, adicional a `/info`
+- Como se aprecia en las imagenes, debido a la poca informacion que contiene el cuerpo de la transferencia, no existe compresión. La ruta `/infozip` resulta más pesada porque contiene un encabezado extra.
+  ![Ruta /info](./images/info.png "Ruta /info")
+  ![Ruta /infozip](./images/infozip.png "Ruta /infozip")
 
-### Con nodemon (no incluido en el package.json):
+Luego implementar loggueo (con alguna librería vista en clase) que registre lo siguiente:
 
-```
-nodemon index.js
-nodemon index.js -p 8082
-nodemon index -p 8082 -m cluster
-```
+- Ruta y método de todas las peticiones recibidas por el servidor (info)
+- Ruta y método de las peticiones a rutas inexistentes en el servidor (warning)
+- Errores lanzados por las apis de mensajes y productos, únicamente (error)
+  Considerar el siguiente criterio:
+- Loggear todos los niveles a consola (info, warning y error)
+- Registrar sólo los logs de warning a un archivo llamada warn.log
+- Enviar sólo los logs de error a un archivo llamada error.log
 
-Procesos modo fork:
+### Resolución:
 
-![Modo fork con nodemon](./images/nodemon-fork.png "Modo fork con nodemon")
+## ANÁLISIS COMPLETO DE PERFORMANCE
 
-Procesos modo cluster:
+Luego, realizar el análisis completo de performance del servidor con el que venimos trabajando.
+Vamos a trabajar sobre la ruta '/info', en modo fork, agregando ó extrayendo un console.log de la información colectada antes de devolverla al cliente. Además desactivaremos el child_process de la ruta '/randoms'
+Para ambas condiciones (con o sin console.log) en la ruta '/info' OBTENER:
 
-![Modo cluster con nodemon](./images/nodemon-fork.png "Modo cluster con nodemon")
+1. El perfilamiento del servidor, realizando el test con --prof de node.js. Analizar los resultados obtenidos luego de procesarlos con --prof-process.
+   Utilizaremos como test de carga Artillery en línea de comandos, emulando 50 conexiones concurrentes con 20 request por cada una. Extraer un reporte con los resultados en archivo de texto.
 
-### Con forever (no incluido en el package.json):
+## ANÁLISIS COMPLETO DE PERFORMANCE - autocannon
 
-```
-forever start -w index.js
-forever start -w index.js -p 8082
-forever start -w index.js -m cluster
-```
+Luego utilizaremos Autocannon en línea de comandos, emulando 100 conexiones concurrentes realizadas en un tiempo de 20 segundos. Extraer un reporte con los resultados (puede ser un print screen de la consola) 2) El perfilamiento del servidor con el modo inspector de node.js --inspect. Revisar el tiempo de los procesos menos performantes sobre el archivo fuente de inspección. 3) El diagrama de flama con 0x, emulando la carga con Autocannon con los mismos parámetros anteriores.
+Realizar un informe en formato pdf sobre las pruebas realizadas incluyendo los resultados de todos los test (texto e imágenes).
 
-Para detener: `forever stop index.js`
-
-Procesos con modo fork:
-
-![Modo fork con forever](./images/forever-list.png "Modo fork con forever")
-![Modo fork con forever, procesos OS](./images/forever-os.png "Modo fork con forever, procesos OS")
-
-Procesos con modo cluster:
-
-![Modo cluster con forever](./images/forever-list-cluster.png "Modo cluster con forever")
-![Modo cluster con forever, procesos OS](./images/forever-os-cluster.png "Modo cluster con forever, procesos OS")
-
-### Con PM2 (no incluido en el package.json):
-
-```
-pm2 start index.js -w
-pm2 start index.js --name="cluster-pm2"  -w -i max
-```
-
-Procesos con modo fork:
-
-![Modo fork con pm2](./images/pm2-list.png "Modo fork con pm2")
-![Modo fork con pm2, procesos OS](./images/pm2-os.png "Modo fork con pm2, procesos OS")
-
-Procesos con modo cluster:
-
-![Modo cluster con pm2](./images/pm2-list-cluster.png "Modo cluster con pm2")
-![Modo cluster con pm2, procesos OS](./images/pm2-os-cluster.png "Modo cluster con pm2, procesos OS")
-
-## Consigna: Configurar Nginx para balancear cargas de nuestro servidor de la siguiente manera:
-
-- Redirigir todas las consultas a /api/randoms a un cluster de servidores escuchando en el puerto 8081. El cluster será creado desde node utilizando el módulo nativo cluster.
-- El resto de las consultas, redirigirlas a un servidor individual escuchando en el puerto 8080.
-  Verificar que todo funcione correctamente.
-- Luego, modificar la configuración para que todas las consultas a /api/randoms sean redirigidas a un cluster de servidores gestionado desde nginx, repartiéndolas equitativamente entre 4 instancias escuchando en los puertos 8082, 8083, 8084 y 8085 respectivamente.
-
-### Resolucion: Los archivos de confighuracion se encuentran en la carpeta `/nginx`
-
-Para correr el servidor, usé `pm2 start index.js --name "server-test" --watch -i max`
+👉 Al final incluir la conclusión obtenida a partir del análisis de los datos.
