@@ -5,6 +5,8 @@ const { Router } = express;
 
 const infoRouter = Router();
 
+const logger = require("../utils/logs");
+
 const info = {
   inputArgs: process.argv.slice(2),
   path: process.cwd(),
@@ -17,10 +19,12 @@ const info = {
 };
 
 infoRouter.get("/info", async (req, res) => {
+  logger.info({ ruta: req.path, metodo: req.method });
   res.json(info);
 });
 
 infoRouter.get("/infozip", compression(), async (req, res) => {
+  logger.info({ ruta: req.path, metodo: req.method });
   res.json(info);
 });
 

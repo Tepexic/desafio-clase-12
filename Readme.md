@@ -30,6 +30,11 @@ Luego implementar loggueo (con alguna librería vista en clase) que registre lo 
 
 ### Resolución:
 
+- Agregué el archivo `/utils/logs.js` que crea un logger con Winston
+- Cada ruta contiene la linea `logger.info({ruta: req.path, metodo: req.method});` para loggear por consola la ruta y método asociados.
+- El router de productos, y los sockets de mensajes y productos, loggean errores al archivo `/logs/error.log`
+- Las rutas inexistentes se loggean en `logs/warn.log`
+
 ## ANÁLISIS COMPLETO DE PERFORMANCE
 
 Luego, realizar el análisis completo de performance del servidor con el que venimos trabajando.

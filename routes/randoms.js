@@ -3,8 +3,10 @@ const { Router } = express;
 const { fork } = require("child_process");
 
 const randomsRouter = Router();
+const logger = require("../utils/logs");
 
 randomsRouter.get("/api/randoms", async (req, res) => {
+  logger.info({ ruta: req.path, metodo: req.method });
   const number = req.query.cant ? req.query.cant : 100000000;
   const computo = fork("./utils/calcRandoms.js");
   computo.send(number);

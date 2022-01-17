@@ -17,6 +17,8 @@ const session = require("express-session");
 const auth = require("./utils/auth");
 const passport = require("passport");
 
+const logger = require("./utils/logs");
+
 /**
  * Contenedores
  */
@@ -57,48 +59,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-// app.use("/", productos);
-// app.use("/", authRouter);
-// app.use("/", infoRouter);
-// app.use("/", randomsRouter);
-
-// /**
-//  * Socket.io
-//  */
-// io.on("connection", async (socket) => {
-//   console.log("Un cliente se ha conectado", socket.id);
-//   // Emitir mensajes y prouctos al nuevo socket
-//   socket.emit("productos", await Productos.getAll());
-
-//   socket.emit(
-//     "messages",
-//     normalizeMessages({ id: "messages", messages: await Mensajes.getAll() })
-//   );
-
-//   // Añadir nuevo mensaje y emitir nueva lista
-//   socket.on("new-message", async (data) => {
-//     Mensajes.save(data);
-//     socket.emit("messages", await Mensajes.getAll());
-//   });
-
-//   // Añadir nuevo producto y emitir nueva lista
-//   socket.on("new-product", async (data) => {
-//     Productos.save(data);
-//     socket.emit("productos", await Productos.getAll());
-//   });
-// });
-
-// /**
-//  * Aplicación con autenticación
-//  */
-// app.get("/", (req, res) => {
-//   res.redirect("/tienda");
-// });
-
-// app.get("/tienda", auth, (req, res) => {
-//   res.render("index.ejs", { nombre: req.user?.username });
-// });
 
 /**
  * Iniciar el servidor
@@ -146,6 +106,7 @@ if (isCluster && cluster.isMaster) {
    * Socket.io
    */
   io.on("connection", async (socket) => {
+    logger.info({ ruta: "Conexion de socket", metodo: "socket" });
     console.log("Un cliente se ha conectado", socket.id);
     // Emitir mensajes y prouctos al nuevo socket
     socket.emit("productos", await Productos.getAll());
@@ -157,14 +118,34 @@ if (isCluster && cluster.isMaster) {
 
     // Añadir nuevo mensaje y emitir nueva lista
     socket.on("new-message", async (data) => {
-      Mensajes.save(data);
-      socket.emit("messages", await Mensajes.getAll());
+      logger.info({ ruta: "Nuevo mensaje", metodo: "socket", data });
+      try {
+        Mensajes.save(data);
+        socket.emit("messages", await Mensajes.getAll());
+      } catch (err) {
+        logger.error({
+          ruta: "Error al guardar mensaje",
+          metodo: "socket",
+          data,
+          err,
+        });
+      }
     });
 
     // Añadir nuevo producto y emitir nueva lista
     socket.on("new-product", async (data) => {
-      Productos.save(data);
-      socket.emit("productos", await Productos.getAll());
+      logger.info({ ruta: "Nuevo producto", metodo: "socket", data });
+      try {
+        Productos.save(data);
+        socket.emit("productos", await Productos.getAll());
+      } catch (err) {
+        logger.error({
+          ruta: "Error al guardar producto",
+          metodo: "socket",
+          data,
+          err,
+        });
+      }
     });
   });
 
@@ -172,18 +153,34 @@ if (isCluster && cluster.isMaster) {
    * Aplicación con autenticación
    */
   app.get("/", (req, res) => {
+    logger.info({ ruta: req.path, metodo: req.method });
     res.redirect("/tienda");
   });
 
   app.get("/tienda", auth, (req, res) => {
+    logger.info({ ruta: req.path, metodo: req.method });
     res.render("index.ejs", { nombre: req.user?.username });
+  });
+
+  // Rutas no mapeadas
+  app.get("*", function (req, res) {
+    const mensaje = {
+      ruta: req.path,
+      metodo: req.method,
+      error: "Ruta inexistente",
+    };
+    logger.warn(mensaje);
+    logger.info(mensaje);
+    res.send(404);
   });
 
   console.log(`Proceso ${process.pid} iniciado`);
   const connectedServer = httpServer.listen(argv.port, () => {
     console.log(`Servidor corriendo en http://localhost:${argv.port}`);
   });
-  connectedServer.on("error", (error) =>
-    console.log(`Error en servidor ${error}`)
-  );
+  connectedServer.on("error", (error) => {
+    const mensaje = { ruta: req.path, metodo: req.method, error };
+    logger.info(mensaje);
+    logger.error(mensaje);
+  });
 }

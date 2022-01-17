@@ -1,0 +1,2 @@
+{"level":"warn","message":{"error":"Ruta inexistente","metodo":"GET","ruta":"/infounknown"}}
+{"level":"error","message":{"error":{},"metodo":"GET","ruta":"/api/productos-test"}}
