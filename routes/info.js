@@ -20,6 +20,10 @@ const info = {
 
 infoRouter.get("/info", async (req, res) => {
   logger.info({ ruta: req.path, metodo: req.method });
+  // console.log(info); // para test de carga
+  // for (let i = 0; i < 100; i++) {
+  //   console.log(i);
+  // }
   res.json(info);
 });
 

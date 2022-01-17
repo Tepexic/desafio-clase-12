@@ -1,0 +1,664 @@
+Statistical profiling result from isolate-con-v8.log, (2432 ticks, 14 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+     34    1.4%          /usr/lib/system/libsystem_kernel.dylib
+     21    0.9%          /usr/lib/system/libsystem_malloc.dylib
+     13    0.5%          /usr/lib/system/libsystem_c.dylib
+     12    0.5%          /usr/lib/libc++.1.dylib
+      5    0.2%          /usr/lib/system/libsystem_platform.dylib
+      4    0.2%          /usr/lib/system/libsystem_pthread.dylib
+      3    0.1%          /usr/lib/system/libdyld.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      6    0.2%    0.3%  LazyCompile: *resolve node:path:1091:10
+      4    0.2%    0.2%  LazyCompile: *stylizeWithColor node:internal/util/inspect:521:26
+      3    0.1%    0.1%  LazyCompile: *normalizeString node:path:66:25
+      3    0.1%    0.1%  LazyCompile: *inspect node:internal/util/inspect:286:17
+      2    0.1%    0.1%  LazyCompile: *writeOrBuffer node:internal/streams/writable:365:23
+      2    0.1%    0.1%  LazyCompile: *value node:internal/console/constructor:257:20
+      2    0.1%    0.1%  LazyCompile: *onwrite node:internal/streams/writable:425:17
+      2    0.1%    0.1%  LazyCompile: *formatWithOptionsInternal node:internal/util/inspect:1891:35
+      2    0.1%    0.1%  LazyCompile: *formatWithOptions node:internal/util/inspect:1883:27
+      2    0.1%    0.1%  LazyCompile: *emit node:events:340:44
+      2    0.1%    0.1%  LazyCompile: *afterWrite node:internal/streams/writable:487:20
+      2    0.1%    0.1%  LazyCompile: *Module._nodeModulePaths node:internal/modules/cjs/loader:629:37
+      2    0.1%    0.1%  Function: ^get node:net:1706:6
+      2    0.1%    0.1%  Function: ^formatRaw node:internal/util/inspect:796:19
+      2    0.1%    0.1%  Function: ^Readable.read node:internal/streams/readable:394:35
+      1    0.0%    0.0%  RegExp: ^\/login\/?$
+      1    0.0%    0.0%  RegExp: ^\/failedsignup\/?$
+      1    0.0%    0.0%  RegExp: ^[a-zA-Z_][a-zA-Z_0-9]*$
+      1    0.0%    0.0%  RegExp: ^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$
+      1    0.0%    0.0%  RegExp: [^\t\x20-\x7e\x80-\xff]
+      1    0.0%    0.0%  RegExp: =+$
+      1    0.0%    0.0%  RegExp: ; *([!#$%&'*+.^_`|~0-9A-Za-z-]+) *= *("(?:[\u000b\u0020\u0021\u0023-\u005b\u005d-\u007e\u0080-\u00ff]|\\[\u000b\u0020-\u00ff])*"|[!#$%&'*+.^_`|~0-9A-Za-z-]+) *
+      1    0.0%    0.0%  RegExp: (?:^|\W)chunked(?:$|\W)
+      1    0.0%    0.0%  LazyCompile: *getColorDepth node:internal/tty:106:23
+      1    0.0%    0.0%  LazyCompile: *get node:internal/console/constructor:202:14
+      1    0.0%    0.0%  LazyCompile: *formatProperty node:internal/util/inspect:1672:24
+      1    0.0%    0.0%  LazyCompile: *fastparse /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/parseurl/index.js:95:20
+      1    0.0%    0.0%  LazyCompile: *_onceWrap node:events:514:19
+      1    0.0%    0.0%  LazyCompile: *Readable.on node:internal/streams/readable:875:33
+      1    0.0%    0.0%  LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      1    0.0%    0.0%  Function: ^writevGeneric node:internal/stream_base_commons:126:23
+      1    0.0%    0.0%  Function: ^write node:buffer:592:12
+      1    0.0%    0.0%  Function: ^write /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connection.js:488:15
+      1    0.0%    0.0%  Function: ^utcDate node:internal/http:21:17
+      1    0.0%    0.0%  Function: ^touch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/session/session.js:47:56
+      1    0.0%    0.0%  Function: ^strEscape node:internal/util/inspect:465:19
+      1    0.0%    0.0%  Function: ^store.generate /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:158:28
+      1    0.0%    0.0%  Function: ^spliceOne node:internal/util:394:19
+      1    0.0%    0.0%  Function: ^set maxAge /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/session/cookie.js:83:13
+      1    0.0%    0.0%  Function: ^set expires /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/session/cookie.js:60:14
+      1    0.0%    0.0%  Function: ^serializeInto /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/bson/lib/parser/serializer.js:550:23
+      1    0.0%    0.0%  Function: ^readSync node:fs:684:18
+      1    0.0%    0.0%  Function: ^randomFillSync node:internal/crypto/random:110:24
+      1    0.0%    0.0%  Function: ^processTimers node:internal/timers:485:25
+      1    0.0%    0.0%  Function: ^processPromiseRejections node:internal/process/promises:203:34
+      1    0.0%    0.0%  Function: ^onFinish node:internal/streams/writable:665:20
+      1    0.0%    0.0%  Function: ^next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/send/index.js:732:17
+      1    0.0%    0.0%  Function: ^header /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:754:29
+      1    0.0%    0.0%  Function: ^get node:internal/streams/writable:833:8
+      1    0.0%    0.0%  Function: ^get /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_writable.js:673:20
+      1    0.0%    0.0%  Function: ^get /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_duplex.js:120:20
+      1    0.0%    0.0%  Function: ^formatWithOptionsInternal node:internal/util/inspect:1891:35
+      1    0.0%    0.0%  Function: ^formatValue node:internal/util/inspect:726:21
+      1    0.0%    0.0%  Function: ^etag /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/etag/index.js:70:15
+      1    0.0%    0.0%  Function: ^end node:_http_outgoing:833:45
+      1    0.0%    0.0%  Function: ^dispatch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:98:45
+      1    0.0%    0.0%  Function: ^detachSocket node:_http_server:248:62
+      1    0.0%    0.0%  Function: ^basename node:path:1306:11
+      1    0.0%    0.0%  Function: ^alignPool node:buffer:158:19
+      1    0.0%    0.0%  Function: ^_storeHeader node:_http_outgoing:374:22
+      1    0.0%    0.0%  Function: ^Transform._read /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_transform.js:171:38
+      1    0.0%    0.0%  Function: ^Readable node:internal/streams/readable:181:18
+      1    0.0%    0.0%  Function: ^<anonymous> node:internal/fs/utils:357:35
+      1    0.0%    0.0%  Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+
+ [C++]:
+   ticks  total  nonlib   name
+    810   33.3%   34.6%  t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+    588   24.2%   25.1%  T ___bsdthread_terminate
+    291   12.0%   12.4%  T node::contextify::ContextifyContext::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    194    8.0%    8.3%  t node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+     78    3.2%    3.3%  t _mach_error_string_int
+     77    3.2%    3.3%  t node::EnvGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+     31    1.3%    1.3%  T _thread_destruct_special_reply_port
+     23    0.9%    1.0%  T ___pthread_init
+     20    0.8%    0.9%  T _mach_port_get_attributes
+     18    0.7%    0.8%  t node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+     16    0.7%    0.7%  t node::fs::InternalModuleStat(v8::FunctionCallbackInfo<v8::Value> const&)
+     13    0.5%    0.6%  t node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+     10    0.4%    0.4%  T _mach_vm_read_overwrite
+      7    0.3%    0.3%  T ___thread_selfid
+      5    0.2%    0.2%  t std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > std::__1::__pad_and_output<char, std::__1::char_traits<char> >(std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> >, char const*, char const*, char const*, std::__1::ios_base&, char)
+      5    0.2%    0.2%  t node::EnvQuery(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Integer> const&)
+      5    0.2%    0.2%  t __simple_asl_escape_val
+      4    0.2%    0.2%  t std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)
+      4    0.2%    0.2%  t __simple_asl_connect_once
+      4    0.2%    0.2%  T _vm_copy
+      3    0.1%    0.1%  T node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.1%    0.1%  T node::HandleWrap::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.1%    0.1%  T _mach_vm_copy
+      2    0.1%    0.1%  t void node::Buffer::(anonymous namespace)::StringSlice<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  T node::fs::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  T _pwrite
+      2    0.1%    0.1%  T _kpersona_info
+      2    0.1%    0.1%  T _kdebug_is_enabled
+      1    0.0%    0.0%  t void node::Buffer::(anonymous namespace)::StringWrite<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  t std::__1::__tree<int, std::__1::less<int>, std::__1::allocator<int> >::destroy(std::__1::__tree_node<int, void*>*)
+      1    0.0%    0.0%  t std::__1::__shared_ptr_pointer<char*, std::__1::default_delete<char []>, std::__1::allocator<char> >::__on_zero_shared_weak()
+      1    0.0%    0.0%  t std::__1::__hash_table<unsigned long, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<unsigned long> >::remove(std::__1::__hash_const_iterator<std::__1::__hash_node<unsigned long, void*>*>)
+      1    0.0%    0.0%  t node::fs::Stat(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  t node::fs::FStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  t node::AsyncHooks::pop_async_context(double)
+      1    0.0%    0.0%  T node::loader::ModuleWrap::SetSyntheticExport(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  T node::fs::NewFSReqCallback(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  T node::InternalCallbackScope::Close()
+      1    0.0%    0.0%  T node::ConnectionWrap<node::TCPWrap, uv_tcp_s>::OnConnection(uv_stream_s*, int)
+      1    0.0%    0.0%  T _task_info
+      1    0.0%    0.0%  T _read$NOCANCEL
+      1    0.0%    0.0%  T _mach_vm_purgable_control
+      1    0.0%    0.0%  T _mach_msg_destroy
+      1    0.0%    0.0%  T __simple_asl_send
+      1    0.0%    0.0%  T ___bsdthread_ctl
+
+ [Summary]:
+   ticks  total  nonlib   name
+     87    3.6%    3.7%  JavaScript
+   2239   92.1%   95.7%  C++
+    229    9.4%    9.8%  GC
+     92    3.8%          Shared libraries
+     14    0.6%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+    608   32.0%   25.0%  t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+    588   30.9%   24.2%  T ___bsdthread_terminate
+    291   15.3%   12.0%  T node::contextify::ContextifyContext::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    194   10.2%    8.0%  t node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+     77    4.0%    3.2%  t node::EnvGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+     22    1.2%    0.9%  T ___pthread_init
+     21    1.1%    0.9%  T _thread_destruct_special_reply_port
+     18    0.9%    0.7%  t node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+     16    0.8%    0.7%  t node::fs::InternalModuleStat(v8::FunctionCallbackInfo<v8::Value> const&)
+     13    0.7%    0.5%  t node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+     10    0.5%    0.4%  T _mach_vm_read_overwrite
+      5    0.3%    0.2%  t std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > std::__1::__pad_and_output<char, std::__1::char_traits<char> >(std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> >, char const*, char const*, char const*, std::__1::ios_base&, char)
+      5    0.3%    0.2%  t node::EnvQuery(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Integer> const&)
+      4    0.2%    0.2%  t std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)
+      4    0.2%    0.2%  t __simple_asl_escape_val
+      3    0.2%    0.1%  t __simple_asl_connect_once
+      3    0.2%    0.1%  T node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.2%    0.1%  T node::HandleWrap::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.2%    0.1%  T _vm_copy
+      2    0.1%    0.1%  t void node::Buffer::(anonymous namespace)::StringSlice<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  T node::fs::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  T ___thread_selfid
+      1    0.1%    0.0%  t void node::Buffer::(anonymous namespace)::StringWrite<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.0%  t std::__1::__tree<int, std::__1::less<int>, std::__1::allocator<int> >::destroy(std::__1::__tree_node<int, void*>*)
+      1    0.1%    0.0%  t node::fs::Stat(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.0%  t node::fs::FStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.0%  T node::loader::ModuleWrap::SetSyntheticExport(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.0%  T node::fs::NewFSReqCallback(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.1%    0.0%  T _task_info
+      1    0.1%    0.0%  T __simple_asl_send
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    810   33.3%  t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     42    5.2%    t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      7   16.7%      t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      5   71.4%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      4   80.0%          Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      2   50.0%            Function: ^trySelf node:internal/modules/cjs/loader:441:17
+      2   50.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1   20.0%          Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   14.3%        Function: ^stat node:internal/modules/cjs/loader:151:14
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1   14.3%        Function: ^compileFunction node:vm:308:25
+      1  100.0%          LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1055:37
+      3    7.1%      LazyCompile: *realpathSync node:fs:2408:22
+      3  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      2   66.7%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      2  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1   33.3%          LazyCompile: *Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2    4.8%      LazyCompile: ~checkServer /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:138:21
+      1   50.0%        LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:222:12
+      1  100.0%          LazyCompile: ~executeAndReschedule /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/utils.js:786:34
+      1  100.0%            LazyCompile: ~listOnTimeout node:internal/timers:505:25
+      1   50.0%        Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:222:12
+      1  100.0%          Function: ^executeAndReschedule /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/utils.js:786:34
+      1  100.0%            LazyCompile: ~listOnTimeout node:internal/timers:505:25
+      2    4.8%      LazyCompile: *readPackageScope node:internal/modules/cjs/loader:321:26
+      2  100.0%        Function: ^trySelf node:internal/modules/cjs/loader:441:17
+      2  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2    4.8%      Function: ^toString /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/uid-safe/index.js:102:19
+      2  100.0%        Function: ^uidSync /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/uid-safe/index.js:75:18
+      2  100.0%          Function: ^generateSessionId /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:518:27
+      2  100.0%            Function: ^store.generate /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:158:28
+      2    4.8%      Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      2  100.0%        Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      2  100.0%          Function: ^trySelf node:internal/modules/cjs/loader:441:17
+      2  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2    4.8%      Function: ^format /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/content-type/index.js:65:17
+      2  100.0%        Function: ^setCharset /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/utils.js:250:41
+      2  100.0%          Function: ^send /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:107:25
+      2  100.0%            LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      2    4.8%      Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%        Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2  100.0%          Function: ^require node:internal/modules/cjs/helpers:101:31
+      1   50.0%            Function: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/semver/functions/lte.js:1:1
+      1   50.0%            Function: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:1:1
+      2    4.8%      Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      2  100.0%        Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      2  100.0%          Function: ^next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:114:16
+      2  100.0%            Function: ^dispatch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:98:45
+      1    2.4%      LazyCompile: ~parseOptions /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/connection_string.js:208:22
+      1  100.0%        LazyCompile: ~MongoClient /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/mongo_client.js:60:16
+      1  100.0%          LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/connection.js:776:31
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1    2.4%      LazyCompile: ~isIPv6 node:internal/net:35:16
+      1  100.0%        LazyCompile: ~isIP node:internal/net:39:14
+      1  100.0%          LazyCompile: ~parseSslOptions /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:211:25
+      1  100.0%            LazyCompile: ~makeConnection /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:227:24
+      1    2.4%      LazyCompile: ~ServerResponse node:_http_server:178:24
+      1  100.0%        LazyCompile: ~parserOnIncoming node:_http_server:852:26
+      1  100.0%          LazyCompile: ~parserOnHeadersComplete node:_http_common:77:33
+      1    2.4%      LazyCompile: ~SemVer /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/semver/classes/semver.js:8:15
+      1  100.0%        LazyCompile: ~parse /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/semver/functions/parse.js:6:15
+      1  100.0%          LazyCompile: ~module.exports.evaluate /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/@mapbox/node-pre-gyp/lib/util/versioning.js:277:35
+      1  100.0%            LazyCompile: ~exports.find /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/@mapbox/node-pre-gyp/lib/pre-binding.js:17:24
+      1    2.4%      LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:63:43
+      1  100.0%        LazyCompile: ~prepareHandshakeDocument /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:128:34
+      1  100.0%          LazyCompile: ~performInitialHandshake /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:47:33
+      1  100.0%            LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:16:29
+      1    2.4%      LazyCompile: *Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%        Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1  100.0%          Function: ^require node:internal/modules/cjs/helpers:101:31
+      1  100.0%            Function: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/faker/lib/locales/vi/index.js:1:1
+      1    2.4%      LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      1  100.0%        Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%          Function: ^next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:114:16
+      1  100.0%            Function: ^dispatch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:98:45
+      1    2.4%      Function: ^value node:internal/console/constructor:299:20
+      1  100.0%        Function: ^value node:internal/console/constructor:320:20
+      1  100.0%          Function: ^log node:internal/console/constructor:358:6
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1    2.4%      Function: ^send /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:107:25
+      1  100.0%        Function: ^json /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:239:25
+      1  100.0%          Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      1  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1    2.4%      Function: ^resetMaxAge /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/session/session.js:58:68
+      1  100.0%        Function: ^touch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/session/session.js:47:56
+      1  100.0%          LazyCompile: ~end /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:250:27
+      1  100.0%            LazyCompile: ~send /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:107:25
+      1    2.4%      Function: ^removeColors node:internal/util:76:22
+      1  100.0%        Function: ^isBelowBreakLength node:internal/util/inspect:1740:28
+      1  100.0%          Function: ^reduceToSingleString node:internal/util/inspect:1764:30
+      1  100.0%            Function: ^formatRaw node:internal/util/inspect:796:19
+      1    2.4%      Function: ^pipe /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/send/index.js:510:43
+      1  100.0%        Function: ^serveStatic /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/serve-static/index.js:72:31
+      1  100.0%          Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%            Function: ^trim_prefix /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:288:23
+      1    2.4%      Function: ^parse /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/content-type/index.js:106:16
+      1  100.0%        Function: ^setCharset /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/utils.js:250:41
+      1  100.0%          LazyCompile: ~send /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:107:25
+      1  100.0%            Function: ^json /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:239:25
+      1    2.4%      Function: ^header /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:754:29
+      1  100.0%        Function: ^send /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:107:25
+      1  100.0%          Function: ^json /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:239:25
+      1  100.0%            Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      1    2.4%      Function: ^hasbody /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/type-is/index.js:92:18
+      1  100.0%        Function: ^jsonParser /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/body-parser/lib/types/json.js:98:30
+      1  100.0%          LazyCompile: *next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:176:16
+      1  100.0%            Function: ^expressInit /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/middleware/init.js:29:30
+      1    2.4%      Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1  100.0%        Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%          Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1  100.0%            Function: ^require node:internal/modules/cjs/helpers:101:31
+      1    2.4%      Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1  100.0%        Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      1  100.0%          Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1    2.4%      Function: ^FastBuffer node:internal/buffer:958:14
+      1  100.0%        Function: ^alloc node:buffer:359:30
+      1  100.0%          Function: ^serialize /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/bson/lib/bson.js:111:19
+      1  100.0%            LazyCompile: ~serializeBson /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/commands.js:530:18
+     31    3.8%    Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     26   83.9%      Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      4   15.4%        Function: ~<anonymous> node:internal/child_process:1:1
+      4  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      4   15.4%        Function: ~<anonymous> node:crypto:1:1
+      4  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4  100.0%            Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      3   11.5%        Function: ~<anonymous> node:http:1:1
+      3  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3  100.0%            LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      2    7.7%        Function: ~<anonymous> node:tls:1:1
+      2  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%            Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      2    7.7%        Function: ~<anonymous> node:child_process:1:1
+      2  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        LazyCompile: ~lazyRequire node:internal/crypto/util:67:21
+      1  100.0%          LazyCompile: ~get node:crypto:287:8
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1    3.8%        LazyCompile: ~lazyLoadStreams node:fs:2841:25
+      1  100.0%          LazyCompile: ~get ReadStream node:fs:2984:17
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1    3.8%        LazyCompile: ~get BlockList node:net:1779:16
+      1  100.0%          t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1  100.0%            Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      1    3.8%        Function: ~<anonymous> node:tty:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      1    3.8%        Function: ~<anonymous> node:internal/crypto/pbkdf2:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        Function: ~<anonymous> node:internal/crypto/hkdf:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        Function: ~<anonymous> node:internal/cluster/primary:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        Function: ~<anonymous> node:_tls_wrap:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        Function: ~<anonymous> node:_http_server:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        Function: ~<anonymous> node:_http_common:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%        Function: ~<anonymous> node:_http_client:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      5   16.1%      Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      5  100.0%        Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      5  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      5  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+     23    2.8%    LazyCompile: *compileFunction node:vm:308:25
+     20   87.0%      Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+     20  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+     20  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     20  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      3   13.0%      LazyCompile: *Module._compile node:internal/modules/cjs/loader:1055:37
+      3  100.0%        Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      3  100.0%          Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      3  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+     21    2.6%    LazyCompile: *getColorDepth node:internal/tty:106:23
+     20   95.2%      LazyCompile: *log node:internal/console/constructor:358:6
+     20  100.0%        t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     16   80.0%          LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+     16  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      4   20.0%          Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      4  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1    4.8%      LazyCompile: *value node:internal/console/constructor:299:20
+      1  100.0%        Function: ^value node:internal/console/constructor:320:20
+      1  100.0%          Function: ^log node:internal/console/constructor:358:6
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     17    2.1%    LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+     17  100.0%      Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+     17  100.0%        Function: ^next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:114:16
+     17  100.0%          Function: ^dispatch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:98:45
+     17  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+     16    2.0%    LazyCompile: *writeOrBuffer node:internal/streams/writable:365:23
+     16  100.0%      LazyCompile: *value node:internal/console/constructor:257:20
+     14   87.5%        LazyCompile: *log node:internal/console/constructor:358:6
+     14  100.0%          t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     12   85.7%            LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      2   14.3%            Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      2   12.5%        Function: ^log node:internal/console/constructor:358:6
+      2  100.0%          t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      2  100.0%            Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+     16    2.0%    Function: ^writevGeneric node:internal/stream_base_commons:126:23
+     16  100.0%      Function: ^Socket._writeGeneric node:net:769:42
+     16  100.0%        Function: ^Socket._writev node:net:801:36
+     16  100.0%          Function: ^doWrite node:internal/streams/writable:398:17
+     16  100.0%            Function: ^clearBuffer node:internal/streams/writable:529:21
+     14    1.7%    LazyCompile: *log node:internal/console/constructor:358:6
+     14  100.0%      t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     12   85.7%        LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+     12  100.0%          Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+     12  100.0%            Function: ^next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:114:16
+      2   14.3%        Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      2  100.0%          Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      2  100.0%            Function: ^next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:114:16
+     13    1.6%    Function: ^handleWriteReq node:internal/stream_base_commons:45:24
+     13  100.0%      Function: ^writeGeneric node:internal/stream_base_commons:151:22
+     13  100.0%        Function: ^Socket._writeGeneric node:net:769:42
+     13  100.0%          Function: ^Socket._write node:net:806:35
+     13  100.0%            Function: ^writeOrBuffer node:internal/streams/writable:365:23
+     12    1.5%    LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     12  100.0%      LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      3   25.0%        LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:422:29
+      3  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      3  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2   16.7%        Function: ~<anonymous> node:internal/process/esm_loader:1:1
+      2  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2   16.7%        Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      2  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2   16.7%        Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      2  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    8.3%        LazyCompile: ~initializeSourceMapsHandlers node:internal/bootstrap/pre_execution:461:38
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    8.3%        Function: ~<anonymous> node:internal/modules/esm/load:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    8.3%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+     11    1.4%    Function: ^authenticate /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/passport/lib/middleware/authenticate.js:94:31
+     11  100.0%      LazyCompile: *next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:176:16
+     11  100.0%        Function: ^initialize /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/passport/lib/middleware/initialize.js:51:29
+     11  100.0%          LazyCompile: *next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:176:16
+     11  100.0%            Function: ^session /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:179:26
+     11    1.4%    Function: ^Hash node:internal/crypto/hash:58:14
+     11  100.0%      Function: ^createHash node:crypto:129:20
+      8   72.7%        Function: ^hash /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:596:14
+      6   75.0%          Function: ^isModified /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:425:24
+      4   66.7%            Function: ^shouldSave /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:440:24
+      2   33.3%            Function: ^shouldSetCookie /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:464:29
+      2   25.0%          Function: ^generate /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:363:22
+      2  100.0%            Function: ^session /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:179:26
+      3   27.3%        Function: ^entitytag /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/etag/index.js:39:20
+      3  100.0%          Function: ^etag /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/etag/index.js:70:15
+      3  100.0%            Function: ^generateETag /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/utils.js:275:32
+
+    588   24.2%  T ___bsdthread_terminate
+    588  100.0%    LazyCompile: *writeOrBuffer node:internal/streams/writable:365:23
+    586   99.7%      LazyCompile: *value node:internal/console/constructor:257:20
+    517   88.2%        LazyCompile: *log node:internal/console/constructor:358:6
+    517  100.0%          t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+    409   79.1%            LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+    108   20.9%            Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+     69   11.8%        Function: ^log node:internal/console/constructor:358:6
+     69  100.0%          t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     69  100.0%            Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+
+    291   12.0%  T node::contextify::ContextifyContext::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+    290   99.7%    Function: ^compileFunction node:vm:308:25
+    224   77.2%      Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+    224  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+    221   98.7%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+    193   87.3%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+     28   12.7%            LazyCompile: *Module._load node:internal/modules/cjs/loader:757:24
+      3    1.3%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      3  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+     64   22.1%      LazyCompile: *Module._compile node:internal/modules/cjs/loader:1055:37
+     64  100.0%        Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     64  100.0%          Function: ^Module.load node:internal/modules/cjs/loader:969:33
+     64  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+
+    194    8.0%  t node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+    191   98.5%    Function: ^readSync node:fs:684:18
+    148   77.5%      Function: ^tryReadSync node:fs:429:21
+    148  100.0%        Function: ^readFileSync node:fs:450:22
+    139   93.9%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+    118   84.9%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+     21   15.1%            LazyCompile: *Module._load node:internal/modules/cjs/loader:757:24
+      8    5.4%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      7   87.5%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1   12.5%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+     43   22.5%      LazyCompile: *readFileSync node:fs:450:22
+     43  100.0%        Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+     43  100.0%          Function: ^Module.load node:internal/modules/cjs/loader:969:33
+     43  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      3    1.5%    LazyCompile: ~readSync node:fs:684:18
+      3  100.0%      LazyCompile: ~tryReadSync node:fs:429:21
+      3  100.0%        LazyCompile: ~readFileSync node:fs:450:22
+      3  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      3  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+
+     78    3.2%  t _mach_error_string_int
+
+     77    3.2%  t node::EnvGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+     76   98.7%    LazyCompile: *getColorDepth node:internal/tty:106:23
+     67   88.2%      LazyCompile: *log node:internal/console/constructor:358:6
+     67  100.0%        t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+     60   89.6%          LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+     60  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      7   10.4%          Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      7  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      4    5.3%      LazyCompile: *value node:internal/console/constructor:320:20
+      4  100.0%        Function: ^log node:internal/console/constructor:358:6
+      4  100.0%          t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      4  100.0%            Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      4    5.3%      LazyCompile: *value node:internal/console/constructor:299:20
+      4  100.0%        Function: ^value node:internal/console/constructor:320:20
+      4  100.0%          Function: ^log node:internal/console/constructor:358:6
+      4  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1    1.3%      Function: ^value node:internal/console/constructor:299:20
+      1  100.0%        Function: ^value node:internal/console/constructor:320:20
+      1  100.0%          Function: ^log node:internal/console/constructor:358:6
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1    1.3%    Function: ^getColorDepth node:internal/tty:106:23
+      1  100.0%      Function: ^value node:internal/console/constructor:299:20
+      1  100.0%        Function: ^value node:internal/console/constructor:320:20
+      1  100.0%          Function: ^log node:internal/console/constructor:358:6
+      1  100.0%            t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+
+     34    1.4%  /usr/lib/system/libsystem_kernel.dylib
+     10   29.4%    LazyCompile: *compileFunction node:vm:308:25
+      7   70.0%      Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+      7  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      7  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      7  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      3   30.0%      LazyCompile: *Module._compile node:internal/modules/cjs/loader:1055:37
+      3  100.0%        Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      3  100.0%          Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      3  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      4   11.8%    LazyCompile: *readFileSync node:fs:450:22
+      4  100.0%      Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      4  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      4  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      4  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      2    5.9%    LazyCompile: ~value node:internal/console/constructor:320:20
+      2  100.0%      LazyCompile: ~log node:internal/console/constructor:358:6
+      2  100.0%        t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      2  100.0%          LazyCompile: ~init /Users/tepexic/Documents/GitHub/desafio-clase-12/models/ContenedorMongo.js:26:13
+      2  100.0%            LazyCompile: ~ContenedorMongo /Users/tepexic/Documents/GitHub/desafio-clase-12/models/ContenedorMongo.js:21:14
+      2    5.9%    LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%      LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%        LazyCompile: ~resolveMainPath node:internal/modules/run_main:11:25
+      2  100.0%          LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:74:31
+      2  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    2.9%    LazyCompile: ~setStreamTimeout node:internal/stream_base_commons:254:26
+      1  100.0%      LazyCompile: ~makeConnection /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:227:24
+      1  100.0%        LazyCompile: ~connect /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:15:17
+      1  100.0%          LazyCompile: ~checkServer /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:138:21
+      1  100.0%            LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:222:12
+      1    2.9%    LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:82:28
+      1  100.0%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:23:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    2.9%    LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%      LazyCompile: ~resume /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_readable.js:902:16
+      1  100.0%        LazyCompile: ~Readable.resume /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_readable.js:886:38
+      1  100.0%          LazyCompile: ~Readable.on /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_readable.js:804:34
+      1  100.0%            LazyCompile: ~Readable.pipe /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_readable.js:608:36
+      1    2.9%    LazyCompile: ~isBsonType /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/helpers/isBsonType.js:9:20
+      1  100.0%      LazyCompile: ~clone /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/helpers/clone.js:31:15
+      1  100.0%        LazyCompile: ~cloneObject /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/helpers/clone.js:110:21
+      1  100.0%          LazyCompile: ~clone /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/helpers/clone.js:31:15
+      1  100.0%            LazyCompile: ~cloneObject /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongoose/lib/helpers/clone.js:110:21
+      1    2.9%    LazyCompile: ~_write /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/winston-transport/index.js:69:51
+      1  100.0%      LazyCompile: ~doWrite /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_writable.js:404:17
+      1  100.0%        LazyCompile: ~writeOrBuffer /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_writable.js:363:23
+      1  100.0%          LazyCompile: ~Writable.write /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_writable.js:288:37
+      1  100.0%            LazyCompile: ~ondata /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/readable-stream/lib/_stream_readable.js:679:18
+      1    2.9%    LazyCompile: ~_copy node:buffer:200:15
+      1  100.0%      LazyCompile: ~copy node:buffer:774:16
+      1  100.0%        LazyCompile: ~serialize /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/bson/lib/bson.js:111:19
+      1  100.0%          LazyCompile: ~toBin /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/commands.js:82:10
+      1  100.0%            LazyCompile: ~writeCommand /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/message_stream.js:35:17
+      1    2.9%    LazyCompile: ~MessageStream /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/message_stream.js:21:16
+      1  100.0%      LazyCompile: ~Connection /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connection.js:37:16
+      1  100.0%        LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:16:29
+      1  100.0%          LazyCompile: ~callback /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:239:31
+      1  100.0%            LazyCompile: ~connectHandler /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:270:28
+      1    2.9%    LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      1  100.0%      LazyCompile: ~handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%        LazyCompile: ~next /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:114:16
+      1  100.0%          LazyCompile: ~dispatch /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/route.js:98:45
+      1  100.0%            LazyCompile: ~handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1    2.9%    LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/operations/execute_operation.js:47:70
+      1  100.0%      LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/operations/indexes.js:129:40
+      1  100.0%        LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/operations/indexes.js:107:52
+      1  100.0%          LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connection_pool.js:266:27
+      1  100.0%            LazyCompile: ~handleOperationResult /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/server.js:322:42
+      1    2.9%    Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%          Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+
+     31    1.3%  T _thread_destruct_special_reply_port
+      6   19.4%    LazyCompile: *compileFunction node:vm:308:25
+      6  100.0%      Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+      6  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      6  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1110:37
+      6  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    3.2%    t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1  100.0%      LazyCompile: ~ServerDescription /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/server_description.js:34:16
+      1  100.0%        LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/server.js:58:62
+      1  100.0%          Function: ^emit node:events:340:44
+      1  100.0%            LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:200:52
+      1    3.2%    LazyCompile: ~writeHead /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/on-headers/index.js:28:29
+      1  100.0%      LazyCompile: ~_implicitHeader node:_http_server:264:68
+      1  100.0%        LazyCompile: ~write_ node:_http_outgoing:730:16
+      1  100.0%          LazyCompile: ~end node:_http_outgoing:833:45
+      1  100.0%            LazyCompile: ~end /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:250:27
+      1    3.2%    LazyCompile: ~jsonParser /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/body-parser/lib/types/json.js:98:30
+      1  100.0%      Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%        Function: ^trim_prefix /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:288:23
+      1  100.0%          Function: ^<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:275:64
+      1  100.0%            Function: ^process_params /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/index.js:327:47
+      1    3.2%    LazyCompile: ~insert node:internal/priority_queue:34:9
+      1  100.0%      LazyCompile: ~insert node:internal/timers:350:16
+      1  100.0%        LazyCompile: ~setUnrefTimeout node:internal/timers:372:25
+      1  100.0%          LazyCompile: ~setStreamTimeout node:internal/stream_base_commons:254:26
+      1  100.0%            LazyCompile: ~makeConnection /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:227:24
+      1    3.2%    LazyCompile: ~inTransaction /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sessions.js:218:18
+      1  100.0%      LazyCompile: ~executeWithServerSelection /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/operations/execute_operation.js:66:36
+      1  100.0%        LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/operations/execute_operation.js:17:48
+      1  100.0%          LazyCompile: ~maybePromise /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/utils.js:482:22
+      1  100.0%            LazyCompile: ~executeOperation /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/operations/execute_operation.js:12:26
+      1    3.2%    LazyCompile: ~freeParser node:_http_common:192:20
+      1  100.0%      LazyCompile: ~socketOnClose node:_http_server:587:23
+      1  100.0%        Function: ^emit node:events:340:44
+      1  100.0%          LazyCompile: ~<anonymous> node:net:685:24
+      1    3.2%    LazyCompile: ~formatProperty node:internal/util/inspect:1672:24
+      1  100.0%      LazyCompile: ~formatRaw node:internal/util/inspect:796:19
+      1  100.0%        Function: ^formatValue node:internal/util/inspect:726:21
+      1  100.0%          Function: ^inspect node:internal/util/inspect:286:17
+      1  100.0%            Function: ^formatWithOptionsInternal node:internal/util/inspect:1891:35
+      1    3.2%    LazyCompile: ~clearBuffer node:internal/streams/writable:529:21
+      1  100.0%      LazyCompile: ~Writable.uncork node:internal/streams/writable:341:37
+      1  100.0%        LazyCompile: ~end node:_http_outgoing:833:45
+      1  100.0%          LazyCompile: ~end /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express-session/index.js:250:27
+      1  100.0%            LazyCompile: ~send /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/response.js:107:25
+      1    3.2%    LazyCompile: ~Resolver node:internal/dns/utils:53:14
+      1  100.0%      Function: ~<anonymous> node:internal/dns/utils:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:dns:1:1
+      1    3.2%    LazyCompile: ~Logger /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/winston/lib/winston/logger.js:40:14
+      1  100.0%      LazyCompile: ~DerivedLogger /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/winston/lib/winston/create-logger.js:43:16
+      1  100.0%        LazyCompile: ~module.exports /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/winston/lib/winston/create-logger.js:25:27
+      1  100.0%          Function: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/winston/lib/winston.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1055:37
+      1    3.2%    LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/sdam/monitor.js:200:52
+      1  100.0%      LazyCompile: ~callback /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:48:31
+      1  100.0%        LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connect.js:73:85
+      1  100.0%          LazyCompile: ~messageHandler /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/connection.js:421:35
+      1  100.0%            Function: ^emit node:events:340:44
+      1    3.2%    LazyCompile: *get node:internal/console/constructor:202:14
+      1  100.0%      LazyCompile: *log node:internal/console/constructor:358:6
+      1  100.0%        t node::fs::FileHandle::DoShutdown(node::ShutdownWrap*)::$_2::__invoke(uv_fs_s*)
+      1  100.0%          LazyCompile: *<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/routes/info.js:21:25
+      1  100.0%            Function: ^handle /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/express/lib/router/layer.js:86:49
+      1    3.2%    Function: ^toString node:buffer:782:46
+      1  100.0%      LazyCompile: ~clientFirstMessageBare /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/auth/scram.js:51:32
+      1  100.0%        LazyCompile: ~makeFirstMessage /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/auth/scram.js:61:26
+      1  100.0%          LazyCompile: ~<anonymous> /Users/tepexic/Documents/GitHub/desafio-clase-12/node_modules/mongodb/lib/cmap/auth/scram.js:25:32
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/crypto/random:104:43
+      1    3.2%    Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+      1    3.2%    Function: ^emit node:events:340:44
+      1  100.0%      Function: ^resume_ node:internal/streams/readable:985:17
+      1  100.0%        Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+
