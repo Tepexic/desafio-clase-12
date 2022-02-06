@@ -1,4 +1,4 @@
-const { options } = require("./options/sqlite");
+const { options } = require("../../../data/sqliteOptions");
 const knex = require("knex")(options);
 
 const messages = [

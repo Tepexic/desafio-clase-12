@@ -1,12 +1,12 @@
-# Desafío Clase 16
+# Desafío Clase 38 - DIVIDIR EN CAPAS NUESTRO PROYECTO
 
-## Consigna 1:
+## Consigna:
 
-Tomando como base las clases Contenedor en memoria y en archivos, desarrollar un nuevo contenedor con idénticos métodos pero que funcione sobre bases de datos, utilizando Knex para la conexión. Esta clase debe recibir en su constructor el objeto de configuración de Knex y el nombre de la tabla sobre la cual trabajará. Luego, modificar el desafío entregable de la clase 11”Chat con Websocket”, y:
-cambiar la persistencia de los mensajes de filesystem a base de datos SQLite3.
-cambiar la persistencia de los productos de memoria a base de datos MariaDB.
+Dividir en capas el proyecto entregable con el que venimos trabajando (entregable clase 16: SQL y Node.js), agrupando apropiadamente las capas de ruteo, controlador, lógica de negocio y persistencia.
 
-Desarrollar también un script que utilizando knex cree las tablas necesarias para la persistencia en cuestión (tabla mensajes en sqlite3 y tabla productos en mariaDb).
+Considerar agrupar las rutas por funcionalidad, con sus controladores, lógica de negocio con los casos de uso, y capa de persistencia.
+
+La capa de persistencia contendrá los métodos necesarios para atender la interacción de la lógica de negocio con los propios datos.
 
 ## Notas:
 
@@ -14,3 +14,9 @@ Los scripts para crear y poblar las bases de datos están en:
 
 - DB/messages-table
 - DB/products-table
+
+## Correr localmente el proyecto
+
+- Instalar dependencias: `npm install`
+- Modo de desarrollo con `nodemon`: `npm run dev`
+- Correr localmente: `npm run start`

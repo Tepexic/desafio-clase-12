@@ -1,9 +1,6 @@
 const express = require("express");
 const { Router } = express;
-
-const Contenedor = require("./../model/Contenedor");
-const { options } = require("./../DB/products-table/options/mysql");
-const Productos = new Contenedor(options, "products");
+const Productos = require("./../models/productos");
 
 const productosRouter = Router();
 
