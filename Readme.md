@@ -8,13 +8,6 @@ Considerar agrupar las rutas por funcionalidad, con sus controladores, lógica d
 
 La capa de persistencia contendrá los métodos necesarios para atender la interacción de la lógica de negocio con los propios datos.
 
-## Notas:
-
-Los scripts para crear y poblar las bases de datos están en:
-
-- DB/messages-table
-- DB/products-table
-
 ## Correr localmente el proyecto
 
 - Instalar dependencias: `npm install`
